@@ -3,6 +3,7 @@ OPTEEMACHINE_qemuarm64 = "vexpress-qemu_armv8a"
 OPTEEMACHINE_imx6ullevk = "imx-mx6ullevk"
 OPTEEMACHINE_imx8mq-evk = "imx-mx8mqevk"
 OPTEEMACHINE_imx8mm-lpddr4-evk = "imx-mx8mmevk"
+OPTEEMACHINE_imx8mp-lpddr4-evk = "imx-mx8mpevk"
 OPTEEMACHINE_uz = "zynqmp-zcu102"
 
 EXTRA_OEMAKE_append_qemuarm64 = " \
@@ -27,6 +28,10 @@ EXTRA_OEMAKE_append_imx8mq-evk = " \
     CFG_DT=y CFG_EXTERNAL_DTB_OVERLAY=y CFG_DT_ADDR=0x43200000 \
 "
 EXTRA_OEMAKE_append_imx8mm-lpddr4-evk = " \
+    CFG_NXP_CAAM=y CFG_RNG_PTA=y \
+    CFG_DT=y CFG_EXTERNAL_DTB_OVERLAY=y CFG_DT_ADDR=0x43200000 \
+"
+EXTRA_OEMAKE_append_imx8mp-lpddr4-evk = " \
     CFG_NXP_CAAM=y CFG_RNG_PTA=y \
     CFG_DT=y CFG_EXTERNAL_DTB_OVERLAY=y CFG_DT_ADDR=0x43200000 \
 "
