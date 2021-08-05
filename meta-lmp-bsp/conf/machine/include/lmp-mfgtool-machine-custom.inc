@@ -64,3 +64,11 @@ IMX_DEFAULT_BOOTLOADER_mx8qm ?= "u-boot-fio-mfgtool"
 PREFERRED_PROVIDER_u-boot-default-script_mx8qm = "u-boot-ostree-scr-fit"
 KERNEL_IMAGETYPE_mx8qm = "fitImage"
 KERNEL_CLASSES_mx8qm = " kernel-lmp-fitimage "
+
+# iMX8MPEVK
+UBOOT_SIGN_ENABLE_mx8mp = "1"
+IMX_DEFAULT_BOOTLOADER_mx8mp ?= "u-boot-fio-mfgtool"
+PREFERRED_PROVIDER_u-boot-default-script_mx8mp = "u-boot-ostree-scr"
+IMAGE_BOOT_FILES_mx8mp  = "imx-boot u-boot.itb boot.itb"
+KERNEL_IMAGETYPE_mx8mp = "fitImage"
+KERNEL_CLASSES_mx8mp = " kernel-lmp-fitimage "
