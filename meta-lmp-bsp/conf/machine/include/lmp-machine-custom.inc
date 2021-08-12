@@ -345,8 +345,6 @@ MACHINE_FIRMWARE_mx8mp = "linux-firmware-imx-sdma-imx7d"
 WKS_FILE_sota_mx8mp = "sdimage-imx8-spl-sota.wks.in"
 IMXBOOT_TARGETS_mx8mp = "flash_evk_spl"
 ## iMX8MP EVK
-KERNEL_DEVICETREE_append_imx8mp-lpddr4-evk = " freescale/imx8mp-evk.dtb"
-KMACHINE_imx8mp-lpddr4-evk = "imx8mpevk"
 OSTREE_KERNEL_ARGS_imx8mp-lpddr4-evk ?= "console=tty1 console=ttymxc1,115200 earlycon=ec_imx6q,0x30890000,115200 root=/dev/mmcblk2p2 rootfstype=ext4"
 SOTA_CLIENT_FEATURES_append_imx8mp-lpddr4-evk = " ubootenv"
 MACHINE_FEATURES_remove_imx8mp-lpddr4-evk = "qca9377 qca6174"
