@@ -1,0 +1,63 @@
+From 27e609747541af6c4427c7da206404f17be25890 Mon Sep 17 00:00:00 2001
+From: Tim Anderson <tim.anderson@foundries.io>
+Date: Thu, 12 Aug 2021 10:35:43 -0700
+Subject: [PATCH] TEMP: debug
+
+---
+ common/spl/spl.c     | 1 +
+ common/spl/spl_fit.c | 1 +
+ common/spl/spl_sdp.c | 1 +
+ common/spl/spl_usb.c | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/common/spl/spl.c b/common/spl/spl.c
+index f3346a2c07..5f8238172a 100644
+--- a/common/spl/spl.c
++++ b/common/spl/spl.c
+@@ -5,6 +5,7 @@
+  *
+  * Aneesh V <aneesh@ti.com>
+  */
++#define DEBUG 1
+ 
+ #include <common.h>
+ #include <bloblist.h>
+diff --git a/common/spl/spl_fit.c b/common/spl/spl_fit.c
+index 747d1c54b0..9b396508e7 100644
+--- a/common/spl/spl_fit.c
++++ b/common/spl/spl_fit.c
+@@ -3,6 +3,7 @@
+  * Copyright (C) 2016 Google, Inc
+  * Written by Simon Glass <sjg@chromium.org>
+  */
++#define DEBUG 1
+ 
+ #include <common.h>
+ #include <errno.h>
+diff --git a/common/spl/spl_sdp.c b/common/spl/spl_sdp.c
+index 1bf63ce50c..4d81ae2011 100644
+--- a/common/spl/spl_sdp.c
++++ b/common/spl/spl_sdp.c
+@@ -3,6 +3,7 @@
+  * (C) Copyright 2016 Toradex
+  * Author: Stefan Agner <stefan.agner@toradex.com>
+  */
++#define DEBUG 1
+ 
+ #include <common.h>
+ #include <spl.h>
+diff --git a/common/spl/spl_usb.c b/common/spl/spl_usb.c
+index e29d579b0d..71aca9648d 100644
+--- a/common/spl/spl_usb.c
++++ b/common/spl/spl_usb.c
+@@ -7,6 +7,7 @@
+  *
+  * Derived work from spl_mmc.c
+  */
++#define DEBUG 1
+ 
+ #include <common.h>
+ #include <spl.h>
+-- 
+2.17.1
+

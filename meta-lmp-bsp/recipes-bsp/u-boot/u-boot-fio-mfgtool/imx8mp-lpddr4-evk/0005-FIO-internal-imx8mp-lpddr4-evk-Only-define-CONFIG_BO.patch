@@ -1,0 +1,34 @@
+From 84cc7971c903b0cc376359b91b3570a73625a509 Mon Sep 17 00:00:00 2001
+From: Tim Anderson <tim.anderson@foundries.io>
+Date: Wed, 11 Aug 2021 07:08:56 -0700
+Subject: [PATCH 5/5] [FIO internal] imx8mp-lpddr4-evk: Only define
+ CONFIG_BOOTCOMMAND if not set
+
+Signed-off-by: Tim Anderson <tim.anderson@foundries.io>
+---
+ include/configs/imx8mp_evk.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/configs/imx8mp_evk.h b/include/configs/imx8mp_evk.h
+index 9e5cdc8b12..ed0656ac11 100644
+--- a/include/configs/imx8mp_evk.h
++++ b/include/configs/imx8mp_evk.h
+@@ -165,6 +165,7 @@
+ 			"fi; " \
+ 		"fi;\0"
+ 
++#ifndef CONFIG_BOOTCOMMAND
+ #define CONFIG_BOOTCOMMAND \
+ 	   "mmc dev ${mmcdev}; if mmc rescan; then " \
+ 		   "if run loadbootscript; then " \
+@@ -177,6 +178,7 @@
+ 		   "fi; " \
+ 	   "fi;"
+ #endif
++#endif
+ 
+ /* Link Definitions */
+ #define CONFIG_LOADADDR			0x40480000
+-- 
+2.17.1
+

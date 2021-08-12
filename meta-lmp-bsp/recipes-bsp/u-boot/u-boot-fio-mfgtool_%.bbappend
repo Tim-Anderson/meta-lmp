@@ -2,6 +2,16 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 BOOT_TOOLS_mx8 = "imx-boot-tools"
 
+SRC_URI_append_imx8mp-lpddr4-evk = " \
+    file://0001-FIO-internal-imx8mp-lpddr4-evk-fix-build-issues-when.patch \
+    file://0002-FIO-internal-imx8mp-lpddr4-evk-drop-hardcoded-USB-co.patch \
+    file://0003-FIO-internal-imx8mp-lpddr4-evk-runtime-detection-raw.patch \
+    file://0004-FIO-internal-use-common-spl_mmc_get_uboot_raw_sector.patch \
+    file://0005-FIO-internal-imx8mp-lpddr4-evk-Only-define-CONFIG_BO.patch \
+    file://0006-FIO-internal-imx8m-set-the-fuses-definitions-common-.patch \
+    file://0007-TEMP-debug.patch \
+"
+
 # From u-boot-imx/meta-freescale
 do_deploy_append_mx8m() {
     # Deploy u-boot-nodtb.bin and XX.dtb for mkimage to generate boot binary

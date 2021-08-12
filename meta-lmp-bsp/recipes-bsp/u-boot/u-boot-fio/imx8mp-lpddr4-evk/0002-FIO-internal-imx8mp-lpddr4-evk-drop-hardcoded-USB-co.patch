@@ -1,0 +1,38 @@
+From c188495fbf55bdce66c7462fbdc717a67e3794c9 Mon Sep 17 00:00:00 2001
+From: Igor Opaniuk <igor.opaniuk@foundries.io>
+Date: Tue, 2 Feb 2021 01:21:15 +0200
+Subject: [PATCH 2/5] [FIO internal] imx8mp-lpddr4-evk: drop hardcoded USB
+ configuration
+
+Drop hardcoded USB configuration from imx8mp-lpddr4-mevk header.
+
+Signed-off-by: Igor Opaniuk <igor.opaniuk@foundries.io>
+Signed-off-by: Tim Anderson <tim.anderson@foundries.io>
+---
+ include/configs/imx8mp_evk.h | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+diff --git a/include/configs/imx8mp_evk.h b/include/configs/imx8mp_evk.h
+index d852f3f662..e89149f3e7 100644
+--- a/include/configs/imx8mp_evk.h
++++ b/include/configs/imx8mp_evk.h
+@@ -253,16 +253,6 @@
+ 
+ #define CONFIG_SYS_I2C_SPEED		100000
+ 
+-/* USB configs */
+-#ifndef CONFIG_SPL_BUILD
+-#define CONFIG_CMD_USB
+-#define CONFIG_USB_STORAGE
+-
+-#define CONFIG_CMD_USB_MASS_STORAGE
+-#define CONFIG_USB_GADGET_MASS_STORAGE
+-#define CONFIG_USB_FUNCTION_MASS_STORAGE
+-#endif
+-
+ #define CONFIG_USB_MAX_CONTROLLER_COUNT         2
+ #define CONFIG_USBD_HS
+ #define CONFIG_USB_GADGET_VBUS_DRAW 2
+-- 
+2.17.1
+

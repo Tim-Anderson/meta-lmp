@@ -1,0 +1,62 @@
+From a88ce58455849578d9a4e317103b0f86be499b9e Mon Sep 17 00:00:00 2001
+From: Igor Opaniuk <igor.opaniuk@foundries.io>
+Date: Mon, 15 Feb 2021 19:48:15 +0200
+Subject: [PATCH 3/5] [FIO internal] imx8mp-lpddr4-evk: runtime detection raw
+ sector offsets
+
+Add runtime detection for the next boot image (U-Boot proper FIT) SD/MMC
+sector offset.
+
+Signed-off-by: Igor Opaniuk <igor.opaniuk@foundries.io>
+Signed-off-by: Tim Anderson <tim.anderson@foundries.io>
+---
+ arch/arm/mach-imx/Kconfig    | 4 ++--
+ include/configs/imx8mp_evk.h | 9 +++++++++
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-imx/Kconfig b/arch/arm/mach-imx/Kconfig
+index 1602e29eed..4cf96e6796 100644
+--- a/arch/arm/mach-imx/Kconfig
++++ b/arch/arm/mach-imx/Kconfig
+@@ -32,7 +32,7 @@ config IMX_SEC_INIT
+ config SECONDARY_BOOT_RUNTIME_DETECTION
+ 	bool "SD/MMC sector offset runtime detection"
+ 	default n
+-	depends on (IMX8MQ || IMX8MM || MX6ULL || MX6UL || MX6 || MX7 || MX7ULP) && SPL_MMC_SUPPORT
++	depends on (IMX8MQ || IMX8MM || IMX8MP || MX6ULL || MX6UL || MX6 || MX7 || MX7ULP) && SPL_MMC_SUPPORT
+ 	help
+ 	  Detect correct sector offset in SPL for the next boot image
+ 	  in runtime.
+@@ -40,7 +40,7 @@ config SECONDARY_BOOT_RUNTIME_DETECTION
+ config SECONDARY_BOOT_SECTOR_OFFSET
+ 	hex "SD/MMC sector offset used for ROM secondary boot"
+ 	default 0x0
+-	depends on IMX8MQ || IMX8MM || MX6ULL || MX6UL || MX6 || MX7 || MX7ULP
++	depends on IMX8MQ || IMX8MM || IMX8MP || MX6ULL || MX6UL || MX6 || MX7 || MX7ULP
+ 	help
+ 	  Set the sector offset to non-zero value in SPL used for
+ 	  secondary boot image. This value should be same as the
+diff --git a/include/configs/imx8mp_evk.h b/include/configs/imx8mp_evk.h
+index e89149f3e7..9e5cdc8b12 100644
+--- a/include/configs/imx8mp_evk.h
++++ b/include/configs/imx8mp_evk.h
+@@ -15,7 +15,16 @@
+ #define CONFIG_SPL_MAX_SIZE		(152 * 1024)
+ #define CONFIG_SYS_MONITOR_LEN		(512 * 1024)
+ #define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_USE_SECTOR
++/*
++ * CONFIG_SECONDARY_BOOT_SECTOR_OFFSET was intended to be used as a compile time setting.
++ * If CONFIG_SECONDARY_BOOT_RUNTIME_DETECTION is defined, then only use the base offset of 0x300 here.
++ * CONFIG_SECONDARY_BOOT_SECTOR_OFFSET will be added dynamically if needed.
++ */
++#ifdef CONFIG_SECONDARY_BOOT_RUNTIME_DETECTION
+ #define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR	0x300
++#else
++#define CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR	(0x300 + CONFIG_SECONDARY_BOOT_SECTOR_OFFSET)
++#endif /* CONFIG_SECONDARY_BOOT_RUNTIME_DETECTION */
+ #define CONFIG_SYS_MMCSD_FS_BOOT_PARTITION	1
+ #define CONFIG_SYS_UBOOT_BASE	(QSPI0_AMBA_BASE + CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR * 512)
+ 
+-- 
+2.17.1
+
