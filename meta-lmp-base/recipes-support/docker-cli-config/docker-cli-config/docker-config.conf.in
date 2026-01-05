@@ -1,0 +1,2 @@
+[Service]
+Environment='DOCKER_CONFIG=@@LIBDIR@@/docker/config.json'
