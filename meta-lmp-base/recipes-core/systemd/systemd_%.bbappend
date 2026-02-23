@@ -76,3 +76,6 @@ do_install:append() {
 	# disables the 'mac' policy for pni-names
 	sed -i -e 's: mac::g' ${D}${nonarch_libdir}/systemd/network/99-default.link
 }
+
+# https://lists.openembedded.org/g/openembedded-core/message/231681
+PACKAGECONFIG[sysvinit] = ""
