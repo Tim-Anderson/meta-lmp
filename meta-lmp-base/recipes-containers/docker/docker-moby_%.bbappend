@@ -6,7 +6,6 @@ SRC_URI:append = " \
     file://0002-remote_daemon-increase-containerd-default-timeouts.patch;patchdir=src/import \
     file://0003-registry-increase-TLS-and-connection-timeouts.patch;patchdir=src/import \
     file://0004-layer-Ensure-layer-files-are-synced-to-disk.patch;patchdir=src/import \
-    file://0005-tarexport-Optimize-image-loading-on-local-host.patch;patchdir=src/import \
     file://daemon.json.in \
     file://docker.service \
 "
