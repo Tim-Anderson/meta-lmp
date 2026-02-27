@@ -18,6 +18,9 @@ require conf/distro/include/yocto-uninative.inc
 include conf/distro/include/cve-extra-exclusions.inc
 include conf/distro/include/cve-lmp-extra-exclusions.inc
 
+BB_SIGNATURE_HANDLER = "OEBasicHash"
+BB_HASHSERVE = ""
+
 # Default CVE check options
 CVE_CHECK_REPORT_PATCHED ?= "0"
 CVE_CHECK_SKIP_RECIPE ?= "qemu-native qemu-system-native"
